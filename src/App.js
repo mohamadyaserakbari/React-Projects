@@ -44,7 +44,7 @@ class App extends Component {
   }
 
   handelReset = () => {
-    const counters = this.counters.map(c => {
+    const counters = this.state.counters.map(c => {
       c.value = 0;
       return c;
     });
@@ -53,16 +53,16 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar />
+        <NavBar totallCounter={this.state.counters.filter(c => c.value > 0).length} />
         <Container>
           <div style={{ float: "right" }}>
-            <Counters>
-              counters = {this.state.counters}
-              onIncrement = {this.handleIncrement}
-              onDecrease = {this.handleDecrease}
-              onDelete = {this.handleDelete}
-            </Counters>
-            <Button color='success' className='btn-sm m-2'>تنظیم مجدد</Button>
+            <Counters
+              counters={this.state.counters}
+              onIncrement={this.handleIncrement}
+              onDecrease={this.handleDecrease}
+              onDelete={this.handleDelete}
+            />
+            <Button color='success' className='btn-sm m-2' onClick={this.handelReset}>تنظیم مجدد</Button>
           </div>
         </Container>
       </React.Fragment>

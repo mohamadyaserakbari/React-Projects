@@ -8,7 +8,7 @@ class Counters extends Component {
             onDecrease,
             onIncrement,
             counters
-        } = this.props();
+        } = this.props;
         return (
             <div style={{ float: "right" }}>
                 {counters.map(counter =>
